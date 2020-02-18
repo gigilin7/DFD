@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 enum Choice {ENTER_RECORD=1,VIEW_DAY,VIEW_WEEK,MODIFY,DELETE,SEARCH,QUIT};
-enum WWWW {WHEN=1,WHO,WHERE,WHAT}; //4 ­Ó W 
+enum WWWW {WHEN=1,WHO,WHERE,WHAT}; //4 å€‹ W 
 
 
 typedef struct Record 
@@ -40,13 +40,13 @@ record InitialRecord(record initial)
 	return initial;
 }
 
-record EnterRecord(record newrecord[],int i) //­n¦³warn if ¿é¤Jªºtime¦s¦b
+record EnterRecord(record newrecord[],int i) //è¦æœ‰warn if è¼¸å…¥çš„timeå­˜åœ¨
 {
 	int j;
 	bool flag=true;
 	do
 	{
-		setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+		setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 		printf("Enter date (1~31): ");
 		scanf("%[^\n]",&newrecord[i].date);
 		for(j=0;j<i;j++)
@@ -63,15 +63,15 @@ record EnterRecord(record newrecord[],int i) //­n¦³warn if ¿é¤Jªºtime¦s¦b
 		}	
 	}while( atoi(newrecord[i].date)>31 || atoi(newrecord[i].date)<=0 || flag==false );
 	
-	setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+	setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 	printf("Enter name : ");
 	scanf("%[^\n]",&newrecord[i].name);
 	
-	setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+	setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 	printf("Enter location : ");
 	scanf("%[^\n]",&newrecord[i].location);
 	
-	setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+	setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 	printf("Enter thing : ");
 	scanf("%[^\n]",&newrecord[i].thing);
 
@@ -79,7 +79,7 @@ record EnterRecord(record newrecord[],int i) //­n¦³warn if ¿é¤Jªºtime¦s¦b
 };
 void ViewDay(record viewrecord[],int n)
 {
-	//³Ì©³¤U¦³ª½±µÅª¨úÀÉ®×¿é¥Xªº¤è¦¡ 
+	//æœ€åº•ä¸‹æœ‰ç›´æ¥è®€å–æª”æ¡ˆè¼¸å‡ºçš„æ–¹å¼ 
 	int i,temp;
 	for(i=0;i<10;i++)
 	{
@@ -97,17 +97,17 @@ void ViewDay(record viewrecord[],int n)
 
 void ViewWeek(record viewrecord[],int n)
 {
-	//³Ì©³¤U¦³ª½±µÅª¨úÀÉ®×¿é¥Xªº¤è¦¡
+	//æœ€åº•ä¸‹æœ‰ç›´æ¥è®€å–æª”æ¡ˆè¼¸å‡ºçš„æ–¹å¼
 	int i,j,temp;
 	for(j=n;j<n+7;j++)
 	{
-		bool flag=false;  //­Y§ä¨ì¹ïÀ³dateªºrecord flag³]¬°true 
+		bool flag=false;  //è‹¥æ‰¾åˆ°å°æ‡‰dateçš„record flagè¨­ç‚ºtrue 
 		
-		for(i=0;i<10;i++)  //§ä§ä¦³¨S¦³¹ïÀ³ªºrecord 
+		for(i=0;i<10;i++)  //æ‰¾æ‰¾æœ‰æ²’æœ‰å°æ‡‰çš„record 
 		{
 			temp=atoi(viewrecord[i].date);
 		
-			if( temp== j ) //§ä¨ì´N¦L¥X¨Ó 
+			if( temp== j ) //æ‰¾åˆ°å°±å°å‡ºä¾† 
 			{
 				printf("-> Date: %s \t-> Name: %-20s\n",viewrecord[i].date,viewrecord[i].name);
 				printf("-> Location: %-30s\n",viewrecord[i].location);
@@ -116,7 +116,7 @@ void ViewWeek(record viewrecord[],int n)
 				flag=true;
 			}
 		}	
-		if(!flag) //¨S¦³§ä¨ì flag ¬° false ¡A !flag ¬° true 
+		if(!flag) //æ²’æœ‰æ‰¾åˆ° flag ç‚º false ï¼Œ !flag ç‚º true 
 		{
 			printf("-> Date: %-2d \t-> Name: Null\n",j);
 			printf("-> Location: Null\n");
@@ -124,7 +124,7 @@ void ViewWeek(record viewrecord[],int n)
 			printf("-----------------------\n");
 		}
 	}	
-};//modify¨S¼g¦n 
+};//modifyæ²’å¯«å¥½ 
 record Modify(record modifyrecord[],int n)
 {
 	int i,j=0,temp;
@@ -172,7 +172,7 @@ record Modify(record modifyrecord[],int n)
 		case WHAT:
 		{
 			char thing[81];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter a new thing (len<=80): ");
 			scanf("%[^\n]",thing);
 			
@@ -183,7 +183,7 @@ record Modify(record modifyrecord[],int n)
 		case WHERE:
 		{
 			char location[31];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter a new location (len<=30): ");
 			scanf("%[^\n]",location);
 		
@@ -194,14 +194,14 @@ record Modify(record modifyrecord[],int n)
 		case WHO:
 		{
 			char name[21];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter a new name (<=20): ");
 			scanf("%[^\n]",name);
 		
 			strcpy(modifyrecord[i].name,name);
 			break;
 		}	
-		default:	//­Y¿é¤J¿ù»~ª½±µÂ÷¶} 
+		default:	//è‹¥è¼¸å…¥éŒ¯èª¤ç›´æ¥é›¢é–‹ 
 			printf("Incorrect choice\n");
 	}
 	printf("\n----------modify success------------\n\n");
@@ -219,17 +219,17 @@ record Delete(record deleterecord[],int n)
 	
 	for(i=0;i<10;i++)
 	{
-		temp=atoi(deleterecord[i].date); //µ¥µ¥¤ñ¹ï¦³¨S¦³¥Ø¼Ğ¸ê®Æ 
+		temp=atoi(deleterecord[i].date); //ç­‰ç­‰æ¯”å°æœ‰æ²’æœ‰ç›®æ¨™è³‡æ–™ 
 		if(temp==n)
 		{
-			temp=i;  //±N¤é´Á²Å¦X»İ¨Dªº²Ä i µ§¸ê®Æªº i °O¿ı¤U¨Ó 
-			flag=true;  //ªí¥Ü¦³§ä¨ì 
+			temp=i;  //å°‡æ—¥æœŸç¬¦åˆéœ€æ±‚çš„ç¬¬ i ç­†è³‡æ–™çš„ i è¨˜éŒ„ä¸‹ä¾† 
+			flag=true;  //è¡¨ç¤ºæœ‰æ‰¾åˆ° 
 			break;
 		}
 	}
 
-	// ­«ÂI°õ¦æ deleteªº³¡¤À °£¤F±ı§R°£ªº¶µ¥Ø¥~¡A¨ä¥Lrecord­n¦s¨ìtemprecord¸Ì
-	// temprecord«h¦¨¬°§R°£¦¨¥\ªºrecord 
+	// é‡é»åŸ·è¡Œ deleteçš„éƒ¨åˆ† é™¤äº†æ¬²åˆªé™¤çš„é …ç›®å¤–ï¼Œå…¶ä»–recordè¦å­˜åˆ°temprecordè£¡
+	// temprecordå‰‡æˆç‚ºåˆªé™¤æˆåŠŸçš„record 
 	for(i=0;i<10;i++)
 	{
 		if(i!=temp)
@@ -240,13 +240,13 @@ record Delete(record deleterecord[],int n)
 		InitialRecord(deleterecord[i]);
 		
 	}
-	// ±Ntemprecord ¶Ç¦^µ¹­ì¨Óªº¦ì¸m	
+	// å°‡temprecord å‚³å›çµ¦åŸä¾†çš„ä½ç½®	
 	for(i=0;i<10;i++)
 	{
 		deleterecord[i]=temprecord[i];
 	}
 	
-	// ­Y¦³§ä¨ì flag ¦b«e­±³Q³]¬° true 
+	// è‹¥æœ‰æ‰¾åˆ° flag åœ¨å‰é¢è¢«è¨­ç‚º true 
 	if(flag)
 		printf("\n----------delete success------------\n\n");
 	else
@@ -284,16 +284,16 @@ void Search(record newrecord[])
 		case WHAT:
 		{
 			char thing[81];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter the thing (len<=80): ");
 			scanf("%[^\n]",thing);
 			system("pause");
-			for(i=0;i<10;i++)	//·j´M¬O§_¦³²Å¦Xªº¸ê®Æ 
+			for(i=0;i<10;i++)	//æœå°‹æ˜¯å¦æœ‰ç¬¦åˆçš„è³‡æ–™ 
 			{
 				if(strcmp(newrecord[i].thing,thing)==0)
 				{
 					ViewDay(newrecord,atoi(newrecord[i].date));
-					flag=true;	//ªí¥Ü§ä¨ì¹L¸ê®Æ 
+					flag=true;	//è¡¨ç¤ºæ‰¾åˆ°éè³‡æ–™ 
 				}	
 			}
 			if(!flag)
@@ -303,15 +303,15 @@ void Search(record newrecord[])
 		case WHERE:
 		{
 			char location[31];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter the location (len<=30): ");
 			scanf("%[^\n]",location);
-			for(i=0;i<10;i++)	//·j´M¬O§_¦³²Å¦Xªº¸ê®Æ
+			for(i=0;i<10;i++)	//æœå°‹æ˜¯å¦æœ‰ç¬¦åˆçš„è³‡æ–™
 			{
 				if(strcmp(newrecord[i].location,location)==0)
 				{
 					ViewDay(newrecord,atoi(newrecord[i].date));	
-					flag=true;	//ªí¥Ü§ä¨ì¹L¸ê®Æ 
+					flag=true;	//è¡¨ç¤ºæ‰¾åˆ°éè³‡æ–™ 
 				}	
 			}
 			if(!flag)
@@ -321,28 +321,28 @@ void Search(record newrecord[])
 		case WHO:
 		{
 			char name[21];
-			setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+			setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 			printf("Enter the name (<=20): ");
 			scanf("%[^\n]",name);
-			for(i=0;i<10;i++)	//·j´M¬O§_¦³²Å¦Xªº¸ê®Æ
+			for(i=0;i<10;i++)	//æœå°‹æ˜¯å¦æœ‰ç¬¦åˆçš„è³‡æ–™
 			{
 				if(strcmp(newrecord[i].name,name)==0)
 				{
 					ViewDay(newrecord,atoi(newrecord[i].date));
-					flag=true;	//ªí¥Ü§ä¨ì¹L¸ê®Æ 
+					flag=true;	//è¡¨ç¤ºæ‰¾åˆ°éè³‡æ–™ 
 				}	
 			}
 			if(!flag)
 				printf("\nthe record can not found by \"%s\"\n\n",name); 
 			break;
 		}	
-		default:	//­Y¿é¤J¿ù»~ª½±µÂ÷¶} 
+		default:	//è‹¥è¼¸å…¥éŒ¯èª¤ç›´æ¥é›¢é–‹ 
 			printf("Incorrect choice\n");
 	}
 	
-};//Àx¦s¦¹¦¸°õ¦æ©Ò¦³½s¿èªº¬ö¿ıor¥á±ó 
+};//å„²å­˜æ­¤æ¬¡åŸ·è¡Œæ‰€æœ‰ç·¨è¼¯çš„ç´€éŒ„orä¸Ÿæ£„ 
 void Quit(record newrecord[],int i) 
-{	//i¬O¦³iµ§ªº·N«ä¡A­YS«hÀx¦s¦Üfile¡AD«hª½±µ¥á±ó 
+{	//iæ˜¯æœ‰iç­†çš„æ„æ€ï¼Œè‹¥Så‰‡å„²å­˜è‡³fileï¼ŒDå‰‡ç›´æ¥ä¸Ÿæ£„ 
 	char c[1];
 	int j=0;
 	do
@@ -350,21 +350,21 @@ void Quit(record newrecord[],int i)
 		printf("Do you want to save or discard the record?? (S/D) : ");
 		scanf("%s",c);
 		
-		if(c[0]=='S')	//save §ó·sfile¤º¥ş³¡ªº¸ê®Æ 
+		if(c[0]=='S')	//save æ›´æ–°fileå…§å…¨éƒ¨çš„è³‡æ–™ 
 		{
 			FILE *fout;
 			fout=fopen("Appointment_Book.dat","r+b");
 			
-			fprintf(fout,"%s   %-21s%-31s%-80s\r","date","name","locatoin","thing"); //©ñ¼ĞÃD 
-			fseek(fout,sizeof(record)+4,SEEK_SET); //´M§ä¦ì¸m 		
+			fprintf(fout,"%s   %-21s%-31s%-80s\r","date","name","locatoin","thing"); //æ”¾æ¨™é¡Œ 
+			fseek(fout,sizeof(record)+4,SEEK_SET); //å°‹æ‰¾ä½ç½® 		
 			
 			fclose(fout);
-			for(;j<10;j++)		//¿é¥X¥ı«e½s¿èªºrecord 
+			for(;j<10;j++)		//è¼¸å‡ºå…ˆå‰ç·¨è¼¯çš„record 
 			{
 				fout=fopen("Appointment_Book.dat","r+b");
 			
-				fseek(fout,sizeof(record)*(j+1)+4,SEEK_SET); //´M§ä¦ì¸m 				
-/*/´ú¸Õ¥Î
+				fseek(fout,sizeof(record)*(j+1)+4,SEEK_SET); //å°‹æ‰¾ä½ç½® 				
+/*/æ¸¬è©¦ç”¨
 				printf("-> Date: +%s+\t-> Name: +%s+\n",newrecord[j].date,newrecord[j].name);
 				printf("-> Location: +%s+\n",newrecord[j].location);
 				printf("-> Thing: +%s+\n",newrecord[j].thing);
@@ -372,7 +372,7 @@ void Quit(record newrecord[],int i)
 */
 				fwrite( &newrecord[j],sizeof(record),1,fout);
 
-//´ú¸Õ¥Î		printf("\n+%d+\n",ftell(fout));
+//æ¸¬è©¦ç”¨		printf("\n+%d+\n",ftell(fout));
 				
 				fclose(fout);
 			}
@@ -395,26 +395,26 @@ void InitialFile(record Empty)
 		printf("Do you want initial the record file? (Y/N) : ");
 		char c;
 		scanf("%c",&c);
-		setbuf(stdin, NULL);  //²MªÅbuffer¸Ìªº \n ¨Ï±o[^\n]¥¿±`¹B§@ 
+		setbuf(stdin, NULL);  //æ¸…ç©ºbufferè£¡çš„ \n ä½¿å¾—[^\n]æ­£å¸¸é‹ä½œ 
 		if(c=='Y' || c=='y')
 		{
 			FILE *fout;
 			fout=fopen("Appointment_Book.dat","wb");
-			fprintf(fout,"%s   %-21s%-31s%-80s","date","name","locatoin","thing"); //©ñ¼ĞÃD 
+			fprintf(fout,"%s   %-21s%-31s%-80s","date","name","locatoin","thing"); //æ”¾æ¨™é¡Œ 
 			fwrite( "\n",sizeof(char),1,fout);
 			
 			fclose(fout);
 			
-//´ú¸Õ¥Î	printf("%d+",ftell(fout));
+//æ¸¬è©¦ç”¨	printf("%d+",ftell(fout));
 			
-			for(i=1;i<=10;i++)	//¶}©lªì©l¤Æ 
+			for(i=1;i<=10;i++)	//é–‹å§‹åˆå§‹åŒ– 
 			{	
 				fout=fopen("Appointment_Book.dat","r+b");
 				fseek(fout,sizeof(record),SEEK_SET);
 				if(i==1)
-					fseek(fout,2,SEEK_CUR); //´M§ä¦ì¸m
+					fseek(fout,2,SEEK_CUR); //å°‹æ‰¾ä½ç½®
 				else
-					fseek(fout,2+sizeof(record)*(i-1),SEEK_CUR); //´M§ä¦ì¸m
+					fseek(fout,2+sizeof(record)*(i-1),SEEK_CUR); //å°‹æ‰¾ä½ç½®
 						
 				fwrite( " ",sizeof(char),2,fout);				
 				fwrite( &Empty,sizeof(record)-3,1,fout);
@@ -431,32 +431,32 @@ void InitialFile(record Empty)
 		}
 	}while(1);
 };
-//§PÂ_¬O§_¬°Null record
+//åˆ¤æ–·æ˜¯å¦ç‚ºNull record
 bool NullCompare(record A,record Empty) 
 {
-	/*¦]¬°strcmpµLªk¦Ò¼{ªø«×¤£¦Pªº°İÃD¡A¦]¦¹­«¼g¤@­Ó¤ñ¸ûstringªº
-	¥Helement¤@­Ó¤@­Ó¤ñ¹ï*/ 
-	//return true ¥Nªí ¬Onull ¤]´N¬O¨S¦³¸ê®Æªº
-	//return false ¥Nªí ¸Ó¦ì¸m¦³¸ê®Æ 
+	/*å› ç‚ºstrcmpç„¡æ³•è€ƒæ…®é•·åº¦ä¸åŒçš„å•é¡Œï¼Œå› æ­¤é‡å¯«ä¸€å€‹æ¯”è¼ƒstringçš„
+	ä»¥elementä¸€å€‹ä¸€å€‹æ¯”å°*/ 
+	//return true ä»£è¡¨ æ˜¯null ä¹Ÿå°±æ˜¯æ²’æœ‰è³‡æ–™çš„
+	//return false ä»£è¡¨ è©²ä½ç½®æœ‰è³‡æ–™ 
 	int i;
 	
-	for(i=0;i<strlen(Empty.date);i++)	//ÀË¬ddate 
+	for(i=0;i<strlen(Empty.date);i++)	//æª¢æŸ¥date 
 		if(A.date[i]!=Empty.date[i]) 
 			return false;
 			
-	for(i=0;i<strlen(Empty.location);i++)	//ÀË¬dlocation 
+	for(i=0;i<strlen(Empty.location);i++)	//æª¢æŸ¥location 
 	{
 		if( A.location[i] != Empty.location[i] )
 			return false;
 	}
 	
-	for(i=0;i<strlen(Empty.name);i++)	//ÀË¬dname 
+	for(i=0;i<strlen(Empty.name);i++)	//æª¢æŸ¥name 
 	{
 		if( A.name[i] != Empty.name[i] )
 			return false;
 	}
 	
-	for(i=0;i<strlen(Empty.thing);i++)	//ÀË¬dthing 
+	for(i=0;i<strlen(Empty.thing);i++)	//æª¢æŸ¥thing 
 	{
 		if( A.thing[i] != Empty.thing[i] )
 			return false;
@@ -469,21 +469,21 @@ int main()
 	FILE *fout;
 	fout=fopen("Appointment_Book.dat","r+b"); 
 	static struct Record Empty;
-	record newrecord[10];	//¦s©ñfile¸Ìªº¤Qµ§¸ê®Æªº 
+	record newrecord[10];	//å­˜æ”¾fileè£¡çš„åç­†è³‡æ–™çš„ 
 	int i=0;
 	
-	//§PÂ_ÀÉ®×¬O§_¦s¦b 
+	//åˆ¤æ–·æª”æ¡ˆæ˜¯å¦å­˜åœ¨ 
 	if( fout==NULL || fout==NULL )   
 	{
 		printf("Fail to open Appointment_Book.dat!!\n");
 		printf("\n->Appointment_Book.dat established\n\n");
 		printf("->please execute again...");
-		FILE *f=fopen("Appointment_Book.dat","w");	//fail¬O¦]¬°¨S¦³¸ÓÀÉ®× ¡A ­«·s³Ğ¸ÓÀÉ¦WªºÀÉ®× 
-		fclose(f);		//¦A­«¶}¦³¤F 
+		FILE *f=fopen("Appointment_Book.dat","w");	//failæ˜¯å› ç‚ºæ²’æœ‰è©²æª”æ¡ˆ ï¼Œ é‡æ–°å‰µè©²æª”åçš„æª”æ¡ˆ 
+		fclose(f);		//å†é‡é–‹æœ‰äº† 
 		return;
 	}
 	
-	// ±Nnewrecord²MªÅ 
+	// å°‡newrecordæ¸…ç©º 
 	strcpy( Empty.date , "0" );
 	strcpy( Empty.location , "Null" );
 	strcpy( Empty.name , "Null" );
@@ -491,29 +491,29 @@ int main()
 	for(i=0;i<10;i++)
 		newrecord[i]=Empty;		
 	
-	//	¬O§_ªì©l¤ÆAppointment_Book.datªº®æ¦¡ 
+	//	æ˜¯å¦åˆå§‹åŒ–Appointment_Book.datçš„æ ¼å¼ 
 	InitialFile(Empty);
 
 
-	//Åª¨úfile¸Ìªºrecord¸ê®Æ 
-	fseek(fout,sizeof(record)+4,SEEK_SET); //´M§ä²Ä¤@µ§¸ê®Æªº¦ì¸m 
+	//è®€å–fileè£¡çš„recordè³‡æ–™ 
+	fseek(fout,sizeof(record)+4,SEEK_SET); //å°‹æ‰¾ç¬¬ä¸€ç­†è³‡æ–™çš„ä½ç½® 
 	for(i=0;i<10;i++)
 	{
-//´ú¸Õ¥Î		printf("%d+",ftell(fout));
+//æ¸¬è©¦ç”¨		printf("%d+",ftell(fout));
 		fread(newrecord[i].date,4,1,fout); 
 		fseek(fout,1,SEEK_CUR); 
 		
-		fread(newrecord[i].name,20,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìnewrecord[i].name¸Ì 
+		fread(newrecord[i].name,20,1,fout); //å¾fileè®€å–ä¸€è¡Œè³‡æ–™åˆ°newrecord[i].nameè£¡ 
 		fseek(fout,1,SEEK_CUR); 
 
-		fread(newrecord[i].location,30,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìnewrecord[i].location¸Ì 
+		fread(newrecord[i].location,30,1,fout); //å¾fileè®€å–ä¸€è¡Œè³‡æ–™åˆ°newrecord[i].locationè£¡ 
 		fseek(fout,1,SEEK_CUR);  
 
-		fread(newrecord[i].thing,80,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìnewrecord[i].thing¸Ì 
+		fread(newrecord[i].thing,80,1,fout); //å¾fileè®€å–ä¸€è¡Œè³‡æ–™åˆ°newrecord[i].thingè£¡ 
 		fseek(fout,1,SEEK_CUR);					
 	}
 	
-/*/	´ú¸Õ¤W­±¬O§_¦¨¥\Åª¨ú
+/*/	æ¸¬è©¦ä¸Šé¢æ˜¯å¦æˆåŠŸè®€å–
 	for(i=0;i<10;i++)
 	{
 		printf("-> Date: +%-s+\t-> Name: +%-s+\n",newrecord[i].date,newrecord[i].name);
@@ -523,35 +523,35 @@ int main()
 		
 	}
 */
-	// record³Ì¦h10µ§­Y­n·s¼W­n±q²Äiµ§¶}©l ¡A¦]¦¹´M§ä¨º­Ó i 
+	// recordæœ€å¤š10ç­†è‹¥è¦æ–°å¢è¦å¾ç¬¬iç­†é–‹å§‹ ï¼Œå› æ­¤å°‹æ‰¾é‚£å€‹ i 
 	for(i=0;i<10;i++)
 	{
 		if( NullCompare(newrecord[i],Empty) )
 			break;	
-/*´ú¸Õ¥Î 
+/*æ¸¬è©¦ç”¨ 
 		printf("%s+\n->",newrecord[i].location);
 		printf("%d=\n\n",strcmp(newrecord[i].location, Empty.location));			
 */ 		
 	}
-//´ú¸Õ¥Î*/	printf("%d+",i);
+//æ¸¬è©¦ç”¨*/	printf("%d+",i);
 	
 	
 
-	//¿ï¾Ü¨Ï¥Î­ş­Óservice 
+	//é¸æ“‡ä½¿ç”¨å“ªå€‹service 
 	int choice,n;   
 	
  	while( ( choice = enterchoice() ) != QUIT  ) 
 	{
 		switch( choice )
-		{	//·s¼W¾ã²zdateªº±Æ§Ç ¥Ñ¤p¨ì¤j 
-			case ENTER_RECORD:	//·s¼Wrecord 
+		{	//æ–°å¢æ•´ç†dateçš„æ’åº ç”±å°åˆ°å¤§ 
+			case ENTER_RECORD:	//æ–°å¢record 
 			{
 				if( i < 10 )
 					EnterRecord( newrecord , i );
 				i++;
 				break;
 			}
-			case VIEW_DAY:	//¬İ¬Y¤Ñªºrecord 
+			case VIEW_DAY:	//çœ‹æŸå¤©çš„record 
 			{
 				do
 				{
@@ -561,7 +561,7 @@ int main()
 				ViewDay( newrecord , n );
 				break;
 			}
-			case VIEW_WEEK:	//¬İ¬Y¤Ñ¶}©lªº¤C¤Ñªºrecord 
+			case VIEW_WEEK:	//çœ‹æŸå¤©é–‹å§‹çš„ä¸ƒå¤©çš„record 
 			{
 				do
 				{
@@ -569,10 +569,10 @@ int main()
 					scanf( "%d" , &n );
 				}while( n > 31 || n <= 0 );
 				
-				ViewWeek( newrecord , n ); //¿é¥X±µ¤U¨Ó¤C¤Ñ 
+				ViewWeek( newrecord , n ); //è¼¸å‡ºæ¥ä¸‹ä¾†ä¸ƒå¤© 
 				break;
 			}
-			case MODIFY:	//§ó§ï¸ê®Æ 
+			case MODIFY:	//æ›´æ”¹è³‡æ–™ 
 			{
 				for(n=0;n<i;n++)
 				{
@@ -589,7 +589,7 @@ int main()
 				Modify( newrecord , n); 
 				break;
 			}
-			case DELETE:	//§R°£¬Y¦æ 
+			case DELETE:	//åˆªé™¤æŸè¡Œ 
 			{
 			 	for(n=0;n<i;n++)
 				{
@@ -614,7 +614,7 @@ int main()
 			default:
 				printf( "Incorrect service\n\n" );
 		}
-		setbuf( stdin, NULL );  //²MªÅbuffer¸Ìªº¤º®e¨Ï±o enterchoice ¥¿±`¹B§@ 
+		setbuf( stdin, NULL );  //æ¸…ç©ºbufferè£¡çš„å…§å®¹ä½¿å¾— enterchoice æ­£å¸¸é‹ä½œ 
 	
 	}
 	//choice to save or discard
@@ -624,98 +624,3 @@ int main()
 	
 	return 0;
 }
-/*  ³o¬OviewdayÅª¨úÀÉ®×¿é¥Xªº¤è¦¡ 
-	int i,temp;
-	char date[2]="",record[140]="";
-	FILE *fout;
-	fout=fopen("Appointment_Book.dat","r+b");
-
-	fseek(fout,138,SEEK_SET); //´M§ä²Ä¤@µ§¸ê®Æªº¦ì¸m 
-		
-	for(i=0;i<10;i++)
-	{
-		fread(date,2,1,fout); //±qfileÅª¨ú¤@²Õªø«×¬°2ªº¸ê®Æ¨ìdate¸Ì 
-		
-		sscanf(date, "%d", &temp); //char array Âà´«¦¨ int 
-		temp=atoi(data);¤]¥i¥H 
-		
-		if(temp==n)
-		{
-			fseek(fout,138+i*(sizeof(record)),SEEK_SET); //´M§ä²Äiµ§¸ê®Æªº¶}ÀY 
-				
-			fread(record,138,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìrecord¸Ì 
-			printf("the record at %d\n-> %s\n\n",n,record);
-			return 0;
-		}
-		fseek(fout,(sizeof(record)-2),SEEK_CUR); //´M§ä¤U¤@µ§¸ê®Æªº¦ì¸m
-	}
-	printf("\nthe record can not found at this date !!\n\n");
-			
-	fclose(fout);*/
-
-/*	³o¬OviewweekÅª¨úÀÉ®×¿é¥Xªº¤è¦¡ 
-	int i,temp;
-	char date[2]="",temprecord[140];
-	record record[7];
-	bool hasrecord=false;
-	FILE *fout;
-	fout=fopen("Appointment_Book.dat","r+b");
-
-	fseek(fout,138,SEEK_SET); //´M§ä²Ä¤@µ§¸ê®Æªº¦ì¸m 
-	
-	for(i=0;i<7;i++)
-	{
-		viewrecord[i]=Empty;
-		viewrecord[i].date=n+i;
-	
-	}	
-	for(i=0;i<10;i++)
-	{
-		fread(date,2,1,fout); //±qfileÅª¨ú¤@²Õªø«×¬°2ªº¸ê®Æ¨ìdate¸Ì 
-		sscanf(date, "%d", &temp); //char array Âà´«¦¨ int 
-		temp=atoi(data);¤]¥i¥H 
-		
-		if(temp>=n && temp<n+7)
-		{
-			fseek(fout,144+i*(sizeof(record)+4),SEEK_SET); //´M§ä²Äiµ§¸ê®Æªº¶}ÀY 
-			
-		//	fread(temprecord,138,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìtemprecord¸Ì 
-		//	sscanf(date, "%d", &temp); //char array Âà´«¦¨ int 
-
-			fread(viewrecord[i].name,19,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìviewrecord[i].name¸Ì 
-			fseek(fout,1,SEEK_CUR); 
-
-			fread(viewrecord[i].location,29,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìviewrecord[i].location¸Ì 
-			fseek(fout,1,SEEK_CUR); 
-
-			fread(viewrecord[i].thing,79,1,fout); //±qfileÅª¨ú¤@¦æ¸ê®Æ¨ìviewrecord[i].thing¸Ì 
-			fseek(fout,1,SEEK_CUR);
-			
-			fseek(fout,4,SEEK_CUR); //´M§ä¤U¤@µ§¸ê®Æªº¦ì¸m
-			hasrecord=true;
-			
-			
-		}
-		else
-		{
-			fseek(fout,(sizeof(record)+2),SEEK_CUR); //´M§ä¤U¤@µ§¸ê®Æªº¦ì¸m
-		}
-	}
-	if(hasrecord)
-	{
-		printf("the record at date %d ~ %d\n",n,n+7);	
-		for(i=0;i<7;i++)
-		{
-			printf("-> Date: %2d \t-> Name: %-20s\n",viewrecord[i].date,viewrecord[i].name);
-			printf("-> Location: %-30s\n",viewrecord[i].location);
-			printf("-> Thing: %-80s\n",viewrecord[i].thing);
-			printf("-----------------------\n");
-		}
-			
-			
-	}
-	else
-		printf("the record can not found at date %d ~ %d\n",n,n+7);	
-	
-	fclose(fout);*/
-
