@@ -29,4 +29,7 @@
 + 退出：提供“保存”或“放棄”選項
 + 不允許使用`gets（）`和` fgets（）`
 
+# 成果
+<img src="https://github.com/gigilin7/DFD/blob/master/picture/DFD.png" height=400 width=500>
 
+<img src="https://github.com/gigilin7/DFD/blob/master/picture/appointment-book.png"  height=300 width=500>
